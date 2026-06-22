@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intel Sustainability Summit Check-In</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Hero section with Intel branding -->
+    <div class="hero">
+      <div class="hero-content">
+        <img src="img/intel-logo.svg" alt="Intel Logo" class="intel-logo" />
+        <h1>Team Sustainability Summit</h1>
+        <div class="hero-divider"></div>
+        <p>
+          <i class="fas fa-leaf"></i> Check-in system for sustainability event
+          attendees
+        </p>
+      </div>
+    </div>
+
+    <!-- Attendance tracking -->
+    <div class="attendance-tracker">
+      <div class="attendance-header">
+        <i class="fas fa-users"></i>
+        Attendance: <span id="attendeeCount">0</span>/50
+      </div>
+
+      <div class="progress-container">
+        <div
+          id="progressBar"
+          class="progress-bar"
+          role="progressbar"
+          aria-label="Attendance progress"
+          aria-valuemin="0"
+          aria-valuemax="50"
+          aria-valuenow="0"
+        ></div>
+      </div>
+    </div>
+
+    <main class="container">
+      <!-- Greeting and celebration messages -->
+      <p id="greeting" role="status" aria-live="polite"></p>
+      <p id="celebration" role="status" aria-live="polite"></p>
+
+      <!-- Check-in form -->
+      <form class="check-in" id="checkInForm">
+        <label for="attendeeName" class="form-label">Attendee Check-In</label>
+
+        <div class="form-group">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="attendeeName"
+              name="attendeeName"
+              placeholder="Enter name..."
+              autocomplete="name"
+              required
+            />
+
+            <select id="teamSelect" name="team" required>
+              <option value="" disabled selected>Select Team...</option>
+              <option value="water">Team Water Wise</option>
+              <option value="zero">Team Net Zero</option>
+              <option value="power">Team Renewables</option>
+            </select>
+          </div>
+
+          <button type="submit" id="checkInBtn">
+            <i class="fas fa-user-check"></i> Check In
+          </button>
+        </div>
+      </form>
+
+      <!-- Team stats -->
+      <section class="team-stats" aria-labelledby="teamAttendanceHeading">
+        <h2 id="teamAttendanceHeading">Team Attendance</h2>
+
+        <div class="teams-grid">
+          <div class="team-card water" data-team="water">
+            <span class="team-name">🌊 Team Water Wise</span>
+            <span class="team-count" id="waterCount">0</span>
+          </div>
+
+          <div class="team-card zero" data-team="zero">
+            <span class="team-name">🌿 Team Net Zero</span>
+            <span class="team-count" id="zeroCount">0</span>
+          </div>
+
+          <div class="team-card power" data-team="power">
+            <span class="team-name">⚡ Team Renewables</span>
+            <span class="team-count" id="powerCount">0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Checked-in attendee list -->
+      <section class="attendee-section" aria-labelledby="attendeeListHeading">
+        <div class="attendee-section-header">
+          <h2 id="attendeeListHeading">Checked-In Attendees</h2>
+          <button type="button" id="resetBtn" class="reset-button">
+            Reset Check-Ins
+          </button>
+        </div>
+
+        <p id="emptyState" class="empty-state">No attendees checked in yet.</p>
+        <ul id="attendeeList" class="attendee-list"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      &copy; 2025 Intel •
+      <a
+        href="https://www.intel.com/content/www/us/en/corporate-responsibility/2030-goals.html"
+        class="footer-link"
+        >Sustainability Goals</a
+      >
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
